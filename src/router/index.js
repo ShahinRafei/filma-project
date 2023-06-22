@@ -16,11 +16,41 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
   },
+  {
+    path: "/movies/:id",
+    name: "movies",
+    component: () =>
+      import(/* webpackChunkName: "movies" */ "../views/MovieDetail.vue"),
+  },
+  {
+    path: "/request",
+    name: "movieRequest",
+    component: () =>
+      import(
+        /* webpackChunkName: "movieRequest" */ "../views/MovieRequest.vue"
+      ),
+  },
+  {
+    path: "/genres",
+    name: "genres",
+    component: () =>
+      import(/* webpackChunkName: "genres" */ "../views/MovieGenres.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to) {
+    if (to.hash) {
+      const el = window.location.href.split("#")[1];
+      if (el.length) {
+        document.getElementById(el).scrollIntoView();
+      }
+    } else {
+      document.getElementById("app").scrollIntoView();
+    }
+  },
 });
 
 export default router;

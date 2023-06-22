@@ -1,0 +1,35 @@
+@font-face {
+    font-family: Tanha;
+    src: url('@/assets/fonts/Tanha.eot');
+    src: url('@/assets/fonts/Tanha.eot?#iefix') format('FontName-opentype'),
+        url('@/assets/fonts/Tanha.woff') format('woff'),
+        url('@/assets/fonts/Tanha.woff2') format('woff2'),
+        url('@/assets/fonts/Tanha.ttf') format('truetype');
+}
+
+* {
+    font-family: Tanha;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    direction: rtl;
+    margin: 0;
+}
+
+.fadeIn {
+    animation: fadeIn .5s ease-in-out;
+    -webkit-animation: fadeIn .5s ease-in-out;
+}
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

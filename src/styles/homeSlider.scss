@@ -1,0 +1,136 @@
+.slider {
+    width: 100%;
+    height: 500px;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .sliderBg {
+        width: 100%;
+        height: 100%;
+        background-image: url("@/assets/images/header.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+    }
+
+    p {
+        font-size: 2rem;
+        color: white;
+        position: relative;
+
+        &::before {
+            content: '';
+            width: 90%;
+            height: 3px;
+            position: absolute;
+            background-color: $_green;
+            bottom: -15px;
+            right: 5%;
+        }
+    }
+
+    .sliderContainer {
+        width: 90%;
+        height: 350px;
+        overflow: hidden;
+        padding: 10px 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .slideContainer {
+            height: 100%;
+            width: 150%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-shrink: 0;
+
+            .slideItem {
+                height: 100%;
+                width: 0;
+                position: relative;
+                border: solid 3px $_green;
+                @include radius(10px, 10px, 10px, 10px);
+                overflow: hidden;
+                aspect-ratio: 2 / 3;
+                transition: all 0.7s ease-out;
+                -webkit-transition: all 0.7s ease-out;
+                -moz-transition: all 0.7s ease-out;
+                -ms-transition: all 0.7s ease-out;
+                -o-transition: all 0.7s ease-out;
+
+                &.active {
+                    width: $imageWidth;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                .imgCover {
+                    position: absolute;
+                    opacity: 0;
+                    background-color: rgba($color: #000000, $alpha: 0.3);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    width: 100%;
+                    font-size: 5rem;
+                    color: rgba($color: #ffffff, $alpha: 0.8);
+                    backdrop-filter: blur(1px);
+                    transition: opacity 0.3s ease-out;
+                    -webkit-transition: opacity 0.3s ease-out;
+                    -moz-transition: opacity 0.3s ease-out;
+                    -ms-transition: opacity 0.3s ease-out;
+                    -o-transition: opacity 0.3s ease-out;
+                }
+
+                &:hover .imgCover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .slideRight,
+        .slideLeft {
+            position: absolute;
+            width: $logoWidth;
+            height: $logoWidth;
+            @include radius(50%, 50%, 50%, 50%);
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $_green;
+                color: white;
+            }
+        }
+
+        .slideRight {
+            right: 0;
+        }
+
+        .slideLeft {
+            left: 0;
+        }
+    }
+}
